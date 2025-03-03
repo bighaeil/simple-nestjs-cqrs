@@ -9,6 +9,14 @@ export class PostRepository {
     this.posts.push(post);
   }
 
+  updateUserNameInPosts(userId: string, newName: string): void {
+    this.posts.forEach((post) => {
+      if (post.userId === userId) {
+        post.authorName = newName;
+      }
+    });
+  }
+
   findByUserId(userId: string): Post[] {
     return this.posts.filter((post) => post.userId === userId);
   }

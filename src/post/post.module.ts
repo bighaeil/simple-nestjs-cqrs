@@ -5,6 +5,7 @@ import { CreatePostHandler } from './handlers/create-post.handler';
 import { GetPostsByUserHandler } from './handlers/get-posts-by-user.handler';
 import { PostService } from './post.service';
 import { PostController } from './post.controller';
+import { UpdatePostAuthorHandler } from './handlers/update-post-author.handler';
 
 @Module({
   imports: [CqrsModule],
@@ -12,6 +13,7 @@ import { PostController } from './post.controller';
     PostRepository,
     CreatePostHandler,
     GetPostsByUserHandler,
+    UpdatePostAuthorHandler,
     PostService,
   ],
   controllers: [PostController],

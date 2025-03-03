@@ -14,11 +14,12 @@ export class PostService {
   async createPost(
     id: string,
     userId: string,
+    authorName: string,
     title: string,
     content: string,
   ): Promise<void> {
     return this.commandBus.execute(
-      new CreatePostCommand(id, userId, title, content),
+      new CreatePostCommand(id, userId, authorName, title, content),
     );
   }
 

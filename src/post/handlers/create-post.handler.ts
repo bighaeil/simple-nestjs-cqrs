@@ -8,8 +8,8 @@ export class CreatePostHandler implements ICommandHandler<CreatePostCommand> {
   constructor(private readonly postRepository: PostRepository) {}
 
   async execute(command: CreatePostCommand): Promise<void> {
-    const { id, userId, title, content } = command;
-    const post = new Post(id, userId, title, content);
+    const { id, userId, authorName, title, content } = command;
+    const post = new Post(id, userId, authorName, title, content);
     this.postRepository.createPost(post);
   }
 }

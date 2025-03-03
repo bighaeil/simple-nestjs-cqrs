@@ -11,6 +11,7 @@ export class PostController {
     body: {
       id: string;
       userId: string;
+      authorName: string;
       title: string;
       content: string;
     },
@@ -18,6 +19,7 @@ export class PostController {
     return this.postService.createPost(
       body.id,
       body.userId,
+      body.authorName,
       body.title,
       body.content,
     );
