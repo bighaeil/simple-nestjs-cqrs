@@ -1,0 +1,28 @@
+import { Injectable } from '@nestjs/common';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CreatePostCommand } from './commands/create-post.command';
+import { GetPostsByUserQuery } from './queries/get-posts-by-user.query';
+import { Post } from './entities/post.entity';
+
+@Injectable()
+export class PostService {
+  constructor(
+    private commandBus: CommandBus,
+    private queryBus: QueryBus,
+  ) {}
+
+  async createPost(
+    id: string,
+    userId: string,
+    title: string,
+    content: string,
+  ): Promise<void> {
+    return this.commandBus.execute(
+      new CreatePostCommand(id, userId, title, content),
+    );
+  }
+
+  async getPostsByUser(userId: string): Promise<Post[]> {
+    return this.queryBus.execute(new GetPostsByUserQuery(userId));
+  }
+}
